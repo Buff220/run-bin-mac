@@ -1,0 +1,23 @@
+name: Test macOS ARM64 binary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: System information
+        run: |
+          sw_vers
+          uname -m
+          file ./my1script
+
+      - name: Make executable
+        run: chmod +x ./my1script
+
+      - name: Run binary
+        run: ./my1script
