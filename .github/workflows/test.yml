@@ -8,17 +8,14 @@ jobs:
     runs-on: macos-14
 
     steps:
-      - uses: actions/checkout@v4
-
       - name: System information
         run: |
           sw_vers
           uname -m
-          file ./my1script
 
-      - name: Download binary
+      - name: Download and run binary
         run: |
-          curl -L -o my1script "https://github.com/Buff220/run-bin-mac/releases/download/v1.0/my1script"
+          curl -L --fail -o my1script "https://github.com/Buff220/run-bin-mac/releases/download/v1.0/my1script"
           chmod +x my1script
           file my1script
           ./my1script
